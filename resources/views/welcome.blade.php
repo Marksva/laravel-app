@@ -13,8 +13,7 @@
 
     <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
 
-    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        >
+    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png"
         sizes="180x180">
@@ -306,15 +305,15 @@
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="#">
                                     <svg class="bi" aria-hidden="true">
-                                        <use xlink:href="#file-earmark" />
+                                        <use xlink:href="#puzzle" />
                                     </svg>
                                     Configurações
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{{ route('user.index') }}">
                                     <svg class="bi" aria-hidden="true">
-                                        <use xlink:href="#cart" />
+                                        <use xlink:href="#people" />
                                     </svg>
                                     Usuarios
                                 </a>
@@ -337,15 +336,10 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                    <svg class="bi" aria-hidden="true">
-                                        <use xlink:href="#puzzle" />
-                                    </svg>
                                     Integrations
                                 </a>
                             </li>
                         </ul>
-
-                        
                     </div>
                 </div>
             </div>
@@ -502,12 +496,9 @@
             </main>
         </div>
     </div>
-    <script defer src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
-        ></script>
+    <script defer src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
-         crossorigin="anonymous">
-    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" crossorigin="anonymous"></script>
     <script defer src="https://getbootstrap.com/docs/5.3/examples/dashboard/dashboard.js"></script>
 </body>
 
