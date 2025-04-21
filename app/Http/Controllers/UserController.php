@@ -23,27 +23,14 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:4',
-        ]);
-
-        $user = new User();
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $data = $this->validatedData($request);
 
         try {
-            $user->save();
+            User::create($data);
+            return redirect()->route('user.index')->with('success', 'Usuário criado com sucesso!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Erro ao criar usuário: ');
+            return redirect()->back()->with('error', 'Erro ao criar usuário.');
         }
-
-        $user->save();
-
-        return redirect()->route('user.index')->with('success', 'Usuário criado com sucesso!');
     }
 
 
@@ -62,25 +49,15 @@ class UserController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:4',
-        ]);
-        
-        $user = User::find($id);
+        $data = $this->validatedData($request);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        
         try {
-            $user->save();
+            $user = User::findOrFail($id);
+            $user->update($data);
+            return redirect()->route('user.index')->with('success', 'Usuário atualizado com sucesso!');
         } catch (\Exception $e) {
-            return redirect()->route('user.index')->with('error', 'Erro ao atualizar usuário: ');
+            return redirect()->route('user.index')->with('error', 'Erro ao atualizar usuário.');
         }
-
-        return redirect()->route('user.index')->with('success', 'Usuário atualizado com sucesso!');
     }
 
 
@@ -89,5 +66,18 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('user.index')->with('success', 'Usuário deletado com sucesso!');
+    }
+
+    private function validatedData(Request $request): array
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:4',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+
+        return $validated;
     }
 }
