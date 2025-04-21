@@ -76,16 +76,17 @@ class UserController extends Controller
         try {
             $user->save();
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Erro ao atualizar usuário: ');
+            return redirect()->route('user.index')->with('error', 'Erro ao atualizar usuário: ');
         }
 
         return redirect()->route('user.index')->with('success', 'Usuário atualizado com sucesso!');
-        
     }
 
 
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'Usuário deletado com sucesso!');
     }
 }

@@ -302,20 +302,21 @@
                                     Painel
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                    <svg class="bi" aria-hidden="true">
-                                        <use xlink:href="#puzzle" />
-                                    </svg>
-                                    Configurações
-                                </a>
-                            </li>
+                           
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="{{ route('user.index') }}">
                                     <svg class="bi" aria-hidden="true">
                                         <use xlink:href="#people" />
                                     </svg>
                                     Usuarios
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <svg class="bi" aria-hidden="true">
+                                        <use xlink:href="#puzzle" />
+                                    </svg>
+                                    Configurações
                                 </a>
                             </li>
                             <li class="nav-item">

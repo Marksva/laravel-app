@@ -295,7 +295,7 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
-                                    href="#">
+                                    href="{{ route('home') }}">
                                     <svg class="bi" aria-hidden="true">
                                         <use xlink:href="#house-fill" />
                                     </svg>
@@ -350,6 +350,11 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-error" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <table class="table table-striped table-sm">
                         <thead>
@@ -368,10 +373,15 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
                                     <td>
-                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary">Editar</a>
+                                        <a href="{{ route('user.edit', $user->id) }}"
+                                            class="btn btn-primary">Editar</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger">Excluir</a>
+                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"  class="btn btn-danger">Excluir</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
