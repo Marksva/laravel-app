@@ -54,13 +54,33 @@ class UserController extends Controller
 
     public function edit(string $id)
     {
-        //
+        $user = user::find($id);
+        return view('user.edit', compact('user'));
     }
 
 
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:4',
+        ]);
+        
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Erro ao atualizar usuário: ');
+        }
+
+        return redirect()->route('user.index')->with('success', 'Usuário atualizado com sucesso!');
+        
     }
 
 

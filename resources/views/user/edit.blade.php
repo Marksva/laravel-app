@@ -307,7 +307,7 @@
                                     <svg class="bi" aria-hidden="true">
                                         <use xlink:href="#people" />
                                     </svg>
-                                    Usuários
+                                    Usuarios
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -315,7 +315,7 @@
                                     <svg class="bi" aria-hidden="true">
                                         <use xlink:href="#people" />
                                     </svg>
-                                    Novo Usuário
+                                    Novo usuário
                                 </a>
                             </li>
 
@@ -328,7 +328,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">Atualiza Usuario</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -343,48 +343,42 @@
                         </button>
                     </div>
                 </div>
-                <h2>Usuarios</h2>
-                <div class="table-responsive small">
-                    @if (session('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
+                <div class="col-md-12">
+                   
+                    <form action="{{ route('user.update', $user->id) }}" method="post">
+                        @method('PUT')
+                        @csrf
+                        <div class="form group">
+                            <div class="d-flex flex-column align-items-center">
+                                <input type="text" name="name" id="" placeholder="Nome"
+                                    class="form-control w-50" value="{{ old('name', $user->name) }}">
+                                <br>
+                                <input type="email" name="email" id="" placeholder="E-mail"
+                                    class="form-control w-50" value="{{ old('email', $user->email) }}" required>
+                                <br>
+                                <input type="password" name="password" id="" placeholder="Senha"
+                                    class="form-control w-50" value="{{ old('password', $user->password) }}" required>
+                                <br>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary w-25">Salvar</button>
+                                @if (session('error'))
+                                <div class="alert alert-error" role="alert">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                            </div>
+
                         </div>
-                    @endif
 
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">#id</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">created_at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at }}</td>
-                                    <td>
-                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary">Editar</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger">Excluir</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-
-
-                        </tbody>
-                    </table>
+                    </form>
                 </div>
             </main>
         </div>
     </div>
-    <script defer src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script defer src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" crossorigin="anonymous"></script>
     <script defer src="https://getbootstrap.com/docs/5.3/examples/dashboard/dashboard.js"></script>
 </body>
