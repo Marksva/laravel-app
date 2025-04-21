@@ -336,9 +336,10 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                    Integrations
-                                </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="nav-link d-flex align-items-center gap-2">Sair</button>
+                                </form>
                             </li>
                         </ul>
                     </div>
