@@ -386,6 +386,7 @@
                                 </tr>
                             @endforeach
 
+                            {{ $users->appends(request()->query())->links() }}
 
                         </tbody>
                     </table>
