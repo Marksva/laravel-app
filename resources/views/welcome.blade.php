@@ -320,19 +320,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{{ route('pokemon.index') }}">
                                     <svg class="bi" aria-hidden="true">
                                         <use xlink:href="#people" />
                                     </svg>
-                                    Customers
+                                    Gerador de pokemon
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="nav-link d-flex align-items-center gap-2" href="">
                                     <svg class="bi" aria-hidden="true">
                                         <use xlink:href="#graph-up" />
                                     </svg>
-                                    Reports
+                                    front teste
                                 </a>
                             </li>
                             <li class="nav-item">

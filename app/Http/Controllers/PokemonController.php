@@ -9,7 +9,7 @@ use App\Models\Pokemon;
 
 class PokemonController extends Controller
 {
-    public function capturarAleatorio(Request $request)
+    public function captureRandom(Request $request)
     {
 
         $randomId = rand(1, 151); // Geração 1
@@ -40,5 +40,11 @@ class PokemonController extends Controller
             'message' => "{$pokemon->name} capturado com sucesso!",
             'pokemon' => $pokemon
         ]);
+    }
+
+    public function listUser()
+    {
+        $user = auth()->user();
+        return response()->json($user->pokemons()->latest()->get());
     }
 }

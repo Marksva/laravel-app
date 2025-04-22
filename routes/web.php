@@ -17,10 +17,12 @@ Route::get('/dashboard', function () {
     return view('welcome');
 })->middleware('auth');
 
-Route::middleware('auth')->post('/capture-random', [PokemonController::class, 'capturarAleatorio'])->name('pokemon.capturar');
-
 route::get('/pokemon', function () {
     return view('pokemon.index');
-})->middleware('auth');
+})->middleware('auth')->name('pokemon.index');
+
+Route::get('/my-poke', [PokemonController::class, 'listUser'])->middleware('auth');
+
+Route::middleware('auth')->post('/capture-random', [PokemonController::class, 'captureRandom'])->name('pokemon.capturar');
 
 Route::resource('user', UserController::class)->middleware('auth');
